@@ -1,0 +1,54 @@
+body {
+    background-image: url("../../assets/img/sk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(2px);
+    background-blend-mode: screen;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delayed-appear {
+    opacity: 0;
+    animation: fade-in 0.4s ease-in-out forwards;
+    animation-delay: .3s;
+}
+
+/* Style to make content scrollable */
+.content-container {
+    overflow-y: auto;
+}
+
+@media (max-width: 728px) {
+    .sidebar {
+        display: none;
+        transition: transform 0.4s ease;
+    }
+
+    .sidebar.active {
+        display: block;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+@media (min-width: 1200px) {
+    .sidebar {
+        display: block;
+        transition: transform 0.4s ease;
+    } .sidebar-toggle {
+        display: none;
+    }
+}

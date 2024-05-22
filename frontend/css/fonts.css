@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'nsofia';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Sofia Sans'), url("../../assets/fonts/SofiaSans[wght].woff") format('woff')
+}
+
+@font-face {
+    font-family: 'isofia';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Sofia Sans'), url("../../assets/fonts/SofiaSans-Italic[wght].woff") format('woff')
+}
+
+.nsofia {
+    font-family: 'nsofia';
+} .isofia {
+    font-family: 'isofia';
+}

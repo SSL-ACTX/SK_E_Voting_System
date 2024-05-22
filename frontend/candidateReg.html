@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK E-Voting System - Candidate Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for custom styling */
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-input {
+            border-width: 1px;
+            border-color: #CBD5E0;
+        }
+
+        .form-input:focus {
+            border-color: #4299E1;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%231D4ED8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem top 50%;
+            padding-right: 2.5rem;
+        }
+
+        .form-select:focus {
+            border-color: #4299E1;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div id="ntf"></div>
+    <div class="flex items-center justify-center min-h-screen" id="candCont">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-2xl font-semibold mb-4">Candidate Registration</h1>
+            <form id="registrationForm" class="grid grid-cols-2 gap-4">
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="name" class="form-label">
+                        Name:
+                        <input type="text" id="name" name="name" class="form-input mt-1 w-full rounded-md">
+                    </label>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="age" class="form-label">
+                        Age:
+                        <input type="text" id="age" name="age" class="form-input mt-1 w-full rounded-md">
+                    </label>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="residency" class="form-label">
+                        Residency:
+                        <input type="text" id="residency" name="residency" class="form-input mt-1 w-full rounded-md">
+                    </label>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="citizenship" class="form-label">
+                        Citizenship:
+                        <input type="text" id="citizenship" name="citizenship" class="form-input mt-1 w-full rounded-md">
+                    </label>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="party_affiliation" class="form-label">
+                        Party:
+                        <input type="text" id="party_affiliation" name="party_affiliation" class="form-input mt-1 w-full rounded-md">
+                    </label>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="position" class="form-label">
+                        Position:
+                        <select id="position" name="position" class="form-select mt-1 w-full rounded-md">
+                            <option value="SK Chairperson">SK Chairperson</option>
+                            <option value="SK Secretary">SK Secretary</option>
+                            <option value="SK Treasurer">SK Treasurer</option>
+                            <option value="SK Auditor">SK Auditor</option>
+                            <option value="SK Kagawad">SK Kagawad</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-span-2">
+                    <button id="registerButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                        type="submit">Register</button>
+                </div>
+            </form>
+            <div id="notification" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#registrationForm').submit(function (e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '../backend/candidate_registration.php',
+                    data: formData,
+                    success: function (response) {
+                        $('#notification').removeClass('hidden').html(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="../backend/js/candStatus.js"></script>
+</body>
+
+</html>
