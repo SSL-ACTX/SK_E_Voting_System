@@ -124,6 +124,7 @@ $voter_email = $_SESSION["email"];
             $('.sidebar').toggleClass('active');
         }
     </script>
+
 </body>
 
 </html>

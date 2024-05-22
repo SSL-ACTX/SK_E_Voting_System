@@ -167,6 +167,20 @@ $(document).ready(function () {
                 }, 2000);
             }
         });
+
+        // Close the container if URL hash doesn't contain #vote
+        function closeContainerIfNotInVote() {
+            if (window.location.hash !== '#vote') {
+                if (floatingContainer) {
+                    floatingContainer.remove();
+                }
+                clearInterval(intervalId); // Clear the interval
+                console.log('Rules closed because not in #vote');
+            }
+        }
+
+        // Check URL hash every second (adjust interval as needed)
+        var intervalId = setInterval(closeContainerIfNotInVote, 3900);
     }
 
 });

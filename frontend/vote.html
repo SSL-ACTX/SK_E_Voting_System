@@ -7,22 +7,38 @@
     <title>SK E-Voting System - Vote</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        background-image: url("https://i.ibb.co/M1B2vVj/photo-2024-05-22-23-45-31.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        backdrop-filter: brightness(50%) blur(3px);
+    }
 
-<body class="bg-gray-100">
-    <div class="container mx-auto p-8" id="content">
-        <h1 class="text-3xl font-bold mb-8">Vote</h1>
-        <form id="voteForm">
-            <div id="positions"></div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit
-                Vote</button>
-        </form>
+    #mCont {
+        background-color: rgba(255, 255, 255, 0.916)
+    }
+</style>
+
+<body>
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8" id="mCont">
+        <div class="container mx-auto p-8" id="content">
+            <h1 class="text-3xl font-bold mb-8">Vote</h1>
+            <form id="voteForm">
+                <div id="positions"></div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit
+                    Vote</button>
+            </form>
+        </div>
     </div>
 
     <div id="notif"></div>
 
-<script src="../backend/js/alrVoted.js"></script>
-<script src="../backend/js/displayRules.js"></script>
-<script src="../backend/js/voteForm.js"></script>
+    <script src="../backend/js/alrVoted.js"></script>
+    <script src="../backend/js/displayRules.js"></script>
+    <script src="../backend/js/voteForm.js"></script>
+    <script src="./backend/js/chatbot.js"></script>
+
 </body>
 
 </html>

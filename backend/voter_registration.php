@@ -22,17 +22,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST["address"];
     $occupation = $_POST["occupation"];
 
-    // Generate voter ID
-    $voter_id = "VT_" . uniqid();
-
-    // Insert data into the database
-    $sql = "INSERT INTO voters (voter_id, name, password, age, birthday, citizenship, contact_no, address, occupation)
-            VALUES ('$voter_id', '$name', '$password', '$age', '$birthday', '$citizenship', '$contact_no', '$address', '$occupation')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Voter registered successfully!";
+    // Check if the user already exists
+    $check_query = "SELECT * FROM voters WHERE name = '$name'";
+    $result = $conn->query($check_query);
+    if ($result->num_rows > 0) {
+        echo "User already exists!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // Generate voter ID
+        $voter_id = "VT_" . uniqid();
+
+        // Insert data into the database
+        $sql = "INSERT INTO voters (voter_id, name, password, age, birthday, citizenship, contact_no, address, occupation)
+                VALUES ('$voter_id', '$name', '$password', '$age', '$birthday', '$citizenship', '$contact_no', '$address', '$occupation')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Voter registered successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 
     $conn->close();

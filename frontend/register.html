@@ -6,32 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Register</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/logreg.css">
+    <script src="../backend/js/validator001.js"></script>
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold text-center text-gray-800">Register</h1>
-        <form action="../backend/register.php" method="post" class="space-y-4">
+    <div class="fixed top-0 right-0 m-4">
+        <div id="notification" class="hidden p-4 rounded-md shadow-md"></div>
+    </div>
+
+    <div class="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center text-white">Register</h1>
+        <form id="registerForm" class="space-y-4">
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <label for="username" class="block text-sm font-medium text-white">Username:</label>
+                <input type="text" id="username" name="username" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
-                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <label for="email" class="block text-sm font-medium text-white">Email:</label>
+                <input type="email" id="email" name="email" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <label for="password" class="block text-sm font-medium text-white">Password:</label>
+                <input type="password" id="password" name="password" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div class="flex items-center justify-between">
-                <input type="submit" value="Register" class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer">
+                <button type="submit"
+                    class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Register</button>
             </div>
             <div class="text-center">
-                <a href="../index.html" class="text-sm text-indigo-600 hover:underline">Login</a>
+                <a href="../index.html" class="text-sm text-indigo-500 hover:underline">Login</a>
             </div>
         </form>
     </div>
+
+    <div id="notificationContainer" class="fixed top-4 right-4"></div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../backend/register.php', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        showNotification(response.message, response.success ? 'bg-green-500' : 'bg-red-500');
+                        if (response.success) {
+                            setTimeout(function () {
+                                window.location.href = "../index.html";
+                            }, 4000); // Redirect after 4 seconds
+                        }
+                    } else {
+                        showNotification('An error occurred during registration.', 'bg-red-500');
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+
+        function showNotification(message, bgColor) {
+            var notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.className = `p-4 rounded-md shadow-md ${bgColor} text-white`;
+            notification.classList.remove('hidden');
+            setTimeout(function () {
+                notification.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+    <script src="../backend/js/skInjectLogo.js"></script>
+    <script src="../backend/js/chatbot.js"></script>
+
 </body>
 
 </html>

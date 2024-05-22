@@ -88,20 +88,16 @@ foreach ($candidates_sorted as $candidate) {
     <h1 class="text-2xl font-bold mb-4">Election Results</h1>
 
     <!-- Statistics -->
-    <div class="grid grid-cols-3 gap-4 mb-8">
+    <div class="grid grid-cols-3 gap-2 mb-8">
         <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750">
             <h2 class="text-lg font-semibold mb-2">Total Votes Cast</h2>
             <p class="text-4xl font-bold"><?php echo $total_votes; ?></p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750">
-            <h2 class="text-lg font-semibold mb-2">Candidate with Most Votes</h2>
+            <h2 class="text-lg font-semibold mb-2">Most Votes:</h2>
             <p class="text-lg font-semibold"><?php echo $top_candidate["name"]; ?></p>
             <p class="text-sm text-gray-500"><?php echo $top_candidate["party_affiliation"]; ?></p>
             <p class="text-lg font-bold"><?php echo $top_candidate["vote_count"]; ?> votes</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750">
-            <h2 class="text-lg font-semibold mb-2">Status:</h2>
-            <p class="text-md font-bold"><?php echo ($status) ? 'Ended' : 'Ongoing'; ?></p>
         </div>
     </div>
 

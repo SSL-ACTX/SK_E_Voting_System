@@ -86,6 +86,9 @@ function initializeVoteScript() {
                             }
                             // Clear the notification
                             document.getElementById('notif').innerHTML = '';
+    
+                            // Remove 'hidden' class from mCont if voting is open
+                            document.getElementById('mCont').classList.remove('hidden');
                         } else {
                             // Voting is closed
                             document.getElementById('notif').innerHTML = `
@@ -100,6 +103,9 @@ function initializeVoteScript() {
                             </div>
                             </div>
                             </div>`;
+    
+                            // Add 'hidden' class to mCont if voting is closed
+                            document.getElementById('mCont').classList.add('hidden');
                         }
                     } else {
                         console.error('Error checking voting status');
@@ -108,7 +114,7 @@ function initializeVoteScript() {
             };
             xhr.send();
         }
-    }
+    }    
 
     // Run the function immediately and every 5 seconds
     checkVotingStatus();

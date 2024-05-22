@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,40 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/fonts.css">
     <style>
+        body {
+            background-image: url("https://i.ibb.co/BN6DRrm/photo-2024-05-22-23-45-33.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            backdrop-filter:brightness(90%) blur(4px);
+        }
+
         @keyframes fade-in {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes rotate {
-            0% { transform: rotateY(0); }
-            100% { transform: rotateY(360deg); }
+            0% {
+                transform: rotateY(0);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
         }
+
         .rotate {
             animation: rotate 10s linear infinite;
             animation-delay: .5s;
         }
+
         .delayed-appear {
             opacity: 0;
             animation: fade-in 0.3s ease-in-out forwards;
@@ -26,13 +49,19 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 flex justify-center items-center h-screen">
+
+<body class="bg-gray-100 flex justify-center items-center h-screen p-4">
     <div class="max-w-md p-8 bg-white border border-gray-300 rounded-lg shadow-lg delayed-appear fixed right-8">
         <h1 class="text-2xl mb-4 nsofia">SK e-Voting System</h1>
         <div class="w-40 h-40 mx-auto mb-4 rotate">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Sangguniang_Kabataan_logo.svg/150px-Sangguniang_Kabataan_logo.svg.png" alt="Rotating Image" class="w-full h-full object-cover rounded-full">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Sangguniang_Kabataan_logo.svg/150px-Sangguniang_Kabataan_logo.svg.png"
+                alt="Rotating Image" class="w-full h-full object-cover rounded-full">
         </div>
-        <p class="text-gray-700 mb-4 delayed-appear text-justify nsofia">The SK e-Voting System is an online platform designed to facilitate electronic voting for the Sangguniang Kabataan (SK) elections. It allows registered voters to cast their votes securely and conveniently from any location with internet access. The system ensures transparency, accuracy, and integrity of the electoral process, promoting greater participation and engagement among youth voters.</p>
+        <p class="text-gray-700 mb-4 delayed-appear text-justify nsofia">The SK e-Voting System is an online platform
+            designed to facilitate electronic voting for the Sangguniang Kabataan (SK) elections. It allows registered
+            voters to cast their votes securely and conveniently from any location with internet access. The system
+            ensures transparency, accuracy, and integrity of the electoral process, promoting greater participation and
+            engagement among youth voters.</p>
         <p class="text-gray-700 delayed-appear text-justify nsofia">Key features of the SK e-Voting System include:</p>
         <ul class="list-disc pl-6 mt-2 delayed-appear nsofia">
             <li>Secure user authentication and authorization</li>
@@ -42,4 +71,5 @@
         </ul>
     </div>
 </body>
+
 </html>
