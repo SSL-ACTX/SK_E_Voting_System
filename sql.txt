@@ -1,5 +1,0 @@
-ALTER TABLE candidates
-ADD COLUMN approval_status INT DEFAULT 0;
-
-ALTER TABLE status
-ADD COLUMN voting_end BOOLEAN DEFAULT FALSE;

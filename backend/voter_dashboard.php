@@ -24,6 +24,7 @@ $voter_email = $_SESSION["email"];
     <!--<script src="./js/alrVoted.js" async></script>-->
     <script src="./js/voteForm.js" async></script>
     <script src="./js/candStatus.js" async"></script>
+	<script src="./js/validator001.js" async"></script>
     <link rel="stylesheet" href="../frontend/css/vdash.css">
 </head>
 
