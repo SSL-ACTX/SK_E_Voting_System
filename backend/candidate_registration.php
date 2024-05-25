@@ -1,18 +1,14 @@
 <?php
 session_start();
 
-// Check if user is logged in, if not, redirect to login page
 if (!isset($_SESSION["username"])) {
     header("Location: ../index.html");
     exit();
 }
 
-// Include database connection
 require_once "./conn/db_connection.php";
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $name = $_POST["name"];
     $age = $_POST["age"];
     $residency = $_POST["residency"];
@@ -20,19 +16,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $party = $_POST["party_affiliation"];
     $position = $_POST["position"];
     
-    // Set the default approval status to 0 (not approved)
-    $approval_status = 0;
+    $errors = [];
 
-    $candidate_id = "CD_" . uniqid();
+    if (empty($name)) $errors[] = "Name is required.";
+    if (empty($age)) $errors[] = "Age is required.";
+    if (empty($residency)) $errors[] = "Residency is required.";
+    if (empty($citizenship)) $errors[] = "Citizenship is required.";
+    if (empty($party)) $errors[] = "Party affiliation is required.";
+    if (empty($position)) $errors[] = "Position is required.";
 
-    // Insert data into the database, including the approval status
-    $sql = "INSERT INTO candidates (candidate_id, name, age, residency, citizenship, party_affiliation, position, approval_status)
-            VALUES ('$candidate_id', '$name', '$age', '$residency', '$citizenship', '$party', '$position', '$approval_status')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Candidate registered successfully!";
+    if (!empty($errors)) {
+        echo implode('<br>', $errors);
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $approval_status = 0;
+        $candidate_id = "CD_" . uniqid();
+
+        $stmt = $conn->prepare("INSERT INTO candidates (candidate_id, name, age, residency, citizenship, party_affiliation, position, approval_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssissssi", $candidate_id, $name, $age, $residency, $citizenship, $party, $position, $approval_status);
+
+        if ($stmt->execute()) {
+            echo "Candidate registered successfully!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
     }
 
     $conn->close();

@@ -158,7 +158,10 @@ function initializeVoteScript() {
         };
         xhr.send(formData);
     });
+
+    
 }
 
 // Call this function after dynamically loading the content
 initializeVoteScript();
+

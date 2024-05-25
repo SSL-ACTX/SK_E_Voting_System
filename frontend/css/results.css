@@ -1,0 +1,13 @@
+.totVotes {
+    background-image: url("https://media3.giphy.com/media/QpyF0jsO26GWKTWctv/giphy.gif?cid=6c09b952gyk6kto5zjfua3pyhmsei9lc8ct1rfoop0verkb6&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s");
+    background-position:right;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    backdrop-filter: blur(2px);
+} @media (max-width: 900px) {
+    .totVotes {
+        background-position:center;
+        background-size: cover;
+        background-color: #d7f9e1;
+    }
+}

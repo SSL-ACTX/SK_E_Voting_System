@@ -1,17 +1,14 @@
 <?php
 session_start();
-error_reporting(E_ERROR | E_PARSE); // Show only errors and parse errors
+error_reporting(E_ERROR | E_PARSE);
 
-// Check if user is logged in, if not, redirect to login page
 if (!isset($_SESSION["username"])) {
     header("Location: ../index.html");
     exit();
 }
 
-// Include database connection
 require_once "./conn/db_connection.php";
 
-// Function to calculate total votes
 function calculateTotalVotes($conn)
 {
     $total_votes_sql = "SELECT COUNT(*) AS total_votes FROM votes";
@@ -20,7 +17,6 @@ function calculateTotalVotes($conn)
     return $total_votes;
 }
 
-// Function to retrieve candidates sorted by position and votes
 function getCandidatesSorted($conn)
 {
     $candidates_sorted_sql = "SELECT candidates.id, candidates.name, candidates.party_affiliation, 
@@ -38,7 +34,6 @@ function getCandidatesSorted($conn)
     return $candidates_sorted;
 }
 
-// Retrieve the top candidate with the most votes
 $top_candidate_sql = "SELECT candidates.id, candidates.name, candidates.party_affiliation, 
                         candidates.position, COUNT(votes.candidate_id) AS vote_count 
                         FROM candidates 
@@ -51,26 +46,31 @@ $top_candidate_result = $conn->query($top_candidate_sql);
 $top_candidate = $top_candidate_result->fetch_assoc();
 
 
-// Calculate total votes
 $total_votes = calculateTotalVotes($conn);
-
-// Retrieve candidates sorted by position and votes
 $candidates_sorted = getCandidatesSorted($conn);
 
-// Check if winners need to be displayed
 $status_sql = "SELECT voting_end FROM status";
 $status_result = $conn->query($status_sql);
 $status = $status_result->fetch_assoc()["voting_end"];
 
-// Initialize winners array
 $winners = [];
 
-// Get the candidate with the most votes for each position
 foreach ($candidates_sorted as $candidate) {
     if (!isset($winners[$candidate["position"]])) {
         $winners[$candidate["position"]] = $candidate;
     }
 }
+
+$sql = "SELECT COUNT(voter_id) as user_count FROM voters";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $user_count = $row['user_count'];
+} else {
+    $user_count = 0;
+}
+
 
 ?>
 
@@ -81,44 +81,52 @@ foreach ($candidates_sorted as $candidate) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Results</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../frontend/css/results.css">
+    <link rel="stylesheet" href="../frontend/css/output.css">
 </head>
 
-<body class="bg-gray-100 p-8">
-    <h1 class="text-2xl font-bold mb-4">Election Results</h1>
+<body class="bg-gray-400 p-8">
+    <h1 class="text-2xl font-bold mb-4 text-black">Election Results</h1>
 
     <!-- Statistics -->
     <div class="grid grid-cols-3 gap-2 mb-8">
-        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750">
-            <h2 class="text-lg font-semibold mb-2">Total Votes Cast</h2>
-            <p class="text-4xl font-bold"><?php echo $total_votes; ?></p>
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750 totVotes">
+            <h2 class="text-sm uppercase text-gray-700 leading-tight">Total Votes Cast</h2>
+            <p class="text-4xl font-bold text-black"><?php echo $total_votes; ?></p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750">
-            <h2 class="text-lg font-semibold mb-2">Most Votes:</h2>
-            <p class="text-lg font-semibold"><?php echo $top_candidate["name"]; ?></p>
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-750 mostVotes">
+            <h2 class="text-md uppercase text-gray-700 leading-tight">Most Votes:</h2>
+            <p class="text-lg font-semibold text-black"><?php echo $top_candidate["name"]; ?></p>
             <p class="text-sm text-gray-500"><?php echo $top_candidate["party_affiliation"]; ?></p>
-            <p class="text-lg font-bold"><?php echo $top_candidate["vote_count"]; ?> votes</p>
+            <p class="text-lg font-bold text-black"><?php echo $top_candidate["vote_count"]; ?> votes</p>
+        </div>
+        <div class="rounded-lg bg-white shadow-md md:shadow-mdrelative overflow-hidden border border-gray-750">
+            <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                <h4 class="text-sm uppercase text-gray-700 leading-tight">Users</h4>
+                <h3 id="user-count" class="text-3xl text-gray-700 font-semibold leading-tight my-3">
+                    <?php echo $user_count; ?></h3>
+            </div>
         </div>
     </div>
 
-    <!-- Candidate List -->
-    <div class="grid grid-cols-2 gap-4 mb-8">
+    <!-- Candidate and Winners Tables -->
+    <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2">
         <div>
-            <h2 class="text-xl font-semibold mb-2">Candidates</h2><br>
-            <table class="min-w-full divide-y divide-gray-300 bg-white shadow-md overflow-hidden sm:rounded-xl mb-8">
-                <thead class="bg-gray-50 border border-gray-750">
+            <h2 class="text-xl font-semibold mb-2 text-black">Candidates</h2><br>
+            <table class="w-full divide-y divide-gray-300 bg-white shadow-md overflow-hidden sm:rounded-xl mb-8">
+                <thead class="bg-gray-800 border border-gray-750">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Name</th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Position</th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Party</th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                             Votes</th>
                     </tr>
                 </thead>
@@ -133,7 +141,7 @@ foreach ($candidates_sorted as $candidate) {
                   </svg>
                   ';
                         }
-                        echo "<tr>";
+                        echo "<tr class='text-black'>";
                         echo "<td class='px-6 py-4 whitespace-nowrap'>" . $candidate["name"] . $arrow_icon . "</td>";
                         echo "<td class='px-6 py-4 whitespace-nowrap'>" . $candidate["position"] . "</td>";
                         echo "<td class='px-6 py-4 whitespace-nowrap'>" . $candidate["party_affiliation"] . "</td>";
@@ -144,33 +152,29 @@ foreach ($candidates_sorted as $candidate) {
                 </tbody>
             </table>
         </div>
-    </div>
-
-    <?php if ($status): ?>
-        <!-- Winners Table -->
-        <div class="grid grid-cols-2 gap-4 mb-8">
+        <?php if ($status): ?>
             <div>
-                <h2 class="text-xl font-semibold mb-2">Winners</h2><br>
-                <table class="min-w-full divide-y divide-gray-300 bg-white shadow-md overflow-hidden sm:rounded-xl mb-8">
-                    <thead class="bg-gray-50 border border-gray-750">
+                <h2 class="text-xl font-semibold mb-2 text-black">Winners</h2><br>
+                <table class="w-full divide-y divide-gray-300 bg-white shadow-md overflow-hidden sm:rounded-xl mb-8">
+                    <thead class="bg-gray-800 border border-gray-750">
                         <tr>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Name</th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Position</th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Party</th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                 Votes</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300 border border-gray-750">
                         <?php foreach ($winners as $winner): ?>
-                            <tr>
+                            <tr class="text-black">
                                 <td class='px-6 py-4 whitespace-nowrap'><?php echo $winner["name"]; ?></td>
                                 <td class='px-6 py-4 whitespace-nowrap'><?php echo $winner["position"]; ?></td>
                                 <td class='px-6 py-4 whitespace-nowrap'><?php echo $winner["party_affiliation"]; ?></td>
@@ -180,8 +184,9 @@ foreach ($candidates_sorted as $candidate) {
                     </tbody>
                 </table>
             </div>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
+
 </body>
 
 </html>

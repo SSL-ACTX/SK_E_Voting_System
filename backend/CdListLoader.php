@@ -6,21 +6,48 @@ require_once "./conn/db_connection.php";
 $positions_sql = "SELECT DISTINCT position FROM candidates";
 $positions_result = $conn->query($positions_sql);
 
+// Predefined order for the positions
+$position_order = [
+    "SK Chairperson",
+    "SK Secretary",
+    "SK Treasurer",
+    "SK Auditor",
+    "SK Kagawad"
+];
+
+$positions = [];
+
 if ($positions_result->num_rows > 0) {
-    // Loop through each position
-    ob_start(); // Start output buffering
+    // Store positions in an array
     while ($position_row = $positions_result->fetch_assoc()) {
-        $position = $position_row["position"];
+        $positions[] = $position_row["position"];
+    }
+
+    // Sort positions based on the predefined order
+    usort($positions, function($a, $b) use ($position_order) {
+        $pos_a = array_search($a, $position_order);
+        $pos_b = array_search($b, $position_order);
+
+        if ($pos_a === false) $pos_a = count($position_order);
+        if ($pos_b === false) $pos_b = count($position_order);
+
+        return $pos_a - $pos_b;
+    });
+
+    // Loop through each position in the sorted order
+    ob_start(); // Start output buffering
+    echo '<div class="grid grid-cols-1 md:grid-cols-2 gap-8">'; // Start the grid container
+    foreach ($positions as $position) {
 ?>
         <!-- Table for candidates running for <?php echo $position; ?> -->
-        <div class="w-full mb-8">
-            <h2 class="text-xl font-semibold mb-2"><?php echo $position; ?></h2>
-            <table class="min-w-full divide-y divide-gray-200 bg-white shadow-lg overflow-hidden sm:rounded-lg">
-                <thead class="bg-gray-50">
+        <div class="bg-white p-4 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold mb-2 text-black"><?php echo $position; ?></h2>
+            <table class="min-w-full divide-y divide-gray-200 bg-white shadow overflow-hidden sm:rounded-lg border border-gray-700">
+                <thead class="bg-gray-700">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Party</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Name</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Age</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Party</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -31,7 +58,7 @@ if ($positions_result->num_rows > 0) {
 
                     if ($candidates_result->num_rows > 0) {
                         while ($row = $candidates_result->fetch_assoc()) {
-                            echo "<tr>";
+                            echo "<tr class='text-black'>";
                             echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["name"] . "</td>";
                             echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["age"] . "</td>";
                             echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["party_affiliation"] . "</td>";
@@ -46,6 +73,7 @@ if ($positions_result->num_rows > 0) {
         </div>
 <?php
     }
+    echo '</div>'; // End the grid container
     $output = ob_get_clean(); // Get the buffered output
     echo $output; // Output the candidate list
 } else {

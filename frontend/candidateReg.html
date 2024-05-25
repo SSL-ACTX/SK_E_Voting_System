@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Candidate Registration</title>
+    <link rel="stylesheet" href="./css/output.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
         body {
             background-image: url("https://i.ibb.co/8XYcxyQ/photo-2024-05-22-23-45-35.jpg");
@@ -46,49 +48,49 @@
     </style>
 </head>
 
-<body class="bg-gray-100">
+<body data-theme="dark">
 
     <div id="ntf"></div>
     <div class="flex items-center justify-center min-h-screen" id="candCont">
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h1 class="text-2xl font-semibold mb-4">Candidate Registration</h1>
+            <h1 class="text-2xl font-semibold mb-4 text-black">Candidate Registration</h1>
             <form id="registrationForm" class="grid grid-cols-2 gap-4">
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="name" class="form-label">
+                    <label for="name" class="form-label text-gray-700">
                         Name:
-                        <input type="text" id="name" name="name" class="form-input mt-1 w-full rounded-md">
+                        <input type="text" id="name" name="name" class="form-input mt-1 w-full rounded-md" required>
                     </label>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="age" class="form-label">
+                    <label for="age" class="form-label text-gray-700">
                         Age:
-                        <input type="text" id="age" name="age" class="form-input mt-1 w-full rounded-md">
+                        <input type="text" id="age" name="age" class="form-input mt-1 w-full rounded-md" required>
                     </label>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="residency" class="form-label">
+                    <label for="residency" class="form-label text-gray-700">
                         Residency:
-                        <input type="text" id="residency" name="residency" class="form-input mt-1 w-full rounded-md">
+                        <input type="text" id="residency" name="residency" class="form-input mt-1 w-full rounded-md" required>
                     </label>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="citizenship" class="form-label">
+                    <label for="citizenship" class="form-label text-gray-700">
                         Citizenship:
                         <input type="text" id="citizenship" name="citizenship"
-                            class="form-input mt-1 w-full rounded-md">
+                            class="form-input mt-1 w-full rounded-md" required>
                     </label>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="party_affiliation" class="form-label">
+                    <label for="party_affiliation" class="form-label text-gray-700">
                         Party:
                         <input type="text" id="party_affiliation" name="party_affiliation"
-                            class="form-input mt-1 w-full rounded-md">
+                            class="form-input mt-1 w-full rounded-md" required>
                     </label>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <label for="position" class="form-label">
+                    <label for="position" class="form-label text-gray-700">
                         Position:
-                        <select id="position" name="position" class="form-select mt-1 w-full rounded-md">
+                        <select id="position" name="position" class="form-select mt-1 w-full rounded-md" required>
                             <option value="SK Chairperson">SK Chairperson</option>
                             <option value="SK Secretary">SK Secretary</option>
                             <option value="SK Treasurer">SK Treasurer</option>
@@ -114,6 +116,26 @@
         $(document).ready(function () {
             $('#registrationForm').submit(function (e) {
                 e.preventDefault();
+    
+                // Clear previous notifications
+                $('#notification').addClass('hidden').html('');
+    
+                var isValid = true;
+                var errorMessage = 'Please fill out the required fields: ';
+    
+                // Check each input field
+                $('#registrationForm input[type="text"]').each(function() {
+                    if ($(this).val() === '') {
+                        isValid = false;
+                        errorMessage += $(this).attr('name') + ', ';
+                    }
+                });
+    
+                if (!isValid) {
+                    $('#notification').removeClass('hidden').html(errorMessage.slice(0, -2));
+                    return;
+                }
+    
                 var formData = $(this).serialize();
                 $.ajax({
                     type: 'POST',
@@ -129,7 +151,7 @@
             });
         });
     </script>
-    <script src="../backend/js/candStatus.js"></script>
+    
 
 </body>
 
