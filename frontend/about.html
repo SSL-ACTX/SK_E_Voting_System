@@ -9,46 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
-    .shine-effect {
-        position: relative;
-    }.shine-effect::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(360deg, rgba(255, 217, 0, 0.467) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
-        border-radius: 9px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    } .shine-effect:hover::before {
-        opacity: 1;
-    }     .shine-effect-2 {
-        position: relative;
-    } .shine-effect-2::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(360deg, rgba(255, 0, 0, 0.591) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
-        border-radius: 9px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    } .shine-effect-2:hover::before {
-        opacity: 1;
-    } 
+    body { background-image: url("../assets/img/wp.jpg"); } .secAb { background-color: rgba(255, 255, 255, 0.509); } .shine-effect { position: relative; }.shine-effect::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(360deg, rgba(255, 217, 0, 0.467) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%); border-radius: 9px; opacity: 0; transition: opacity 2s ease; pointer-events: none; } .shine-effect:hover::before { opacity: 1; } .shine-effect-2 { position: relative; } .shine-effect-2::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(360deg, rgba(255, 0, 0, 0.591) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%); border-radius: 9px; opacity: 0; transition: opacity 2s ease; pointer-events: none; } .shine-effect-2:hover::before { opacity: 1; } .shine-effect-3 { position: relative; } .shine-effect-3::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(360deg, rgba(0, 255, 110, 0.591) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%); border-radius: 9px; opacity: 0; transition: opacity 2s ease; pointer-events: none; } .shine-effect-3:hover::before { opacity: 1; } .shine-effect-4 { position: relative; } .shine-effect-4::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(360deg, rgba(0, 119, 255, 0.591) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%); border-radius: 9px; opacity: 0; transition: opacity 2s ease; pointer-events: none; } .shine-effect-4:hover::before { opacity: 1; } 
 </style>
 
 <body>
     <div>
-        <section class="py-6 dark:bg-gray-100 dark:text-gray-800">
+        <section class="py-6 dark:bg-gray-100 dark:text-gray-800 rounded-xl secAb">
             <div class="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-                <p class="p-2 text-sm font-medium tracking-wider text-center uppercase">Development Team (Group 3)</p>
+                <p class="p-2 text-md font-medium tracking-wider text-center uppercase text-gray-200">Development Team (Group 3)</p>
                 <h1 class="text-4xl font-bold leading-none text-center sm:text-5xl">The talented people behind the
                     scenes</h1>
                 <div id="team-members" class="flex flex-row flex-wrap justify-center mt-8">
@@ -98,7 +66,7 @@
                         class="shine-effect-2 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            src="https://i.ibb.co/BwcBdHc/gl.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Glennbrix Diolazo</p>
                             <p>Group Leader / Project Manager / System Analyst</p>
@@ -118,10 +86,10 @@
                     </div>
                     <!--jerico-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
+                        class="shine-effect-3 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
+                            src="https://i.ibb.co/r21gBxk/jc.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Jerico Evangelista</p>
                             <p>Project Coordinator / UI/UX Designer</p>
@@ -141,10 +109,10 @@
                     </div>
                     <!--eugene-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
+                        class="shine-effect-4 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            class="shine-effect-4 self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                            src="https://i.ibb.co/4KfCTt7/eg.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Eugene Dianito</p>
                             <p>System Analyst</p>
@@ -164,10 +132,10 @@
                     </div>
                     <!--jhob-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
+                        class="shine-effect-4 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
+                            src="https://i.ibb.co/cLbpZ3Z/jh.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Jhob Aguilar</p>
                             <p>System Analyst</p>
@@ -187,10 +155,10 @@
                     </div>
                     <!--torreon-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
+                        class="shine-effect-4 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
+                            src="https://i.ibb.co/MB6DNZ2/tr.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Angelo Torreon</p>
                             <p>System Analyst</p>
@@ -210,10 +178,10 @@
                     </div>
                     <!--mendoza-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
+                        class="shine-effect-4 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                            src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
+                            src="https://i.ibb.co/h95pcHH/dfg.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Camille Mendoza</p>
                             <p>Group Member</p>
