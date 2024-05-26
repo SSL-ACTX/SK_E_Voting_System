@@ -42,7 +42,7 @@ if ($positions_result->num_rows > 0) {
         <!-- Table for candidates running for <?php echo $position; ?> -->
         <div class="bg-white p-4 shadow-lg rounded-lg">
             <h2 class="text-xl font-semibold mb-2 text-black"><?php echo $position; ?></h2>
-            <table class="min-w-full divide-y divide-gray-200 bg-white shadow overflow-hidden sm:rounded-lg border border-gray-700">
+            <table class="min-w-full divide-y divide-gray-300 bg-white shadow overflow-hidden sm:rounded-lg border border-gray-700">
                 <thead class="bg-gray-700">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Name</th>
@@ -50,7 +50,7 @@ if ($positions_result->num_rows > 0) {
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Party</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody class="bg-white divide-y divide-gray-300">
                     <?php
                     // Retrieve approved candidates for the current position
                     $candidates_sql = "SELECT * FROM candidates WHERE position = '$position' AND approval_status = 1";
