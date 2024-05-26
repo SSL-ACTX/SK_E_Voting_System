@@ -44,10 +44,10 @@
                         <span class="error" id="ageError">Invalid characters detected.</span>
                     </div>
                     <div class="mb-5">
-                        <label for="passwprd" class="form-label text-gray-300">Password:</label>
+                        <label for="password" class="form-label text-gray-300">Password:</label>
                         <input type="password" id="password" name="password"
                             class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                            placeholder="********" required>
+                            required>
                         <span class="error" id="passwordError">Invalid characters detected.</span>
                     </div>
                     <div class="mb-5">
@@ -172,7 +172,7 @@
                         $('#notification').removeClass('hidden').html(response);
                         setTimeout(function () {
                             window.location.href = './logout.php';
-                        }, 2000);
+                        }, 4000);
                     },
                     error: function (xhr, status, error) {
                         console.error(xhr.responseText);
