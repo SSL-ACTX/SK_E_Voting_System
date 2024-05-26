@@ -6,7 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting | About</title>
     <link rel="stylesheet" href="./css/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<style>
+    .shine-effect {
+        position: relative;
+    }.shine-effect::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(360deg, rgba(255, 217, 0, 0.467) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+        border-radius: 9px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    } .shine-effect:hover::before {
+        opacity: 1;
+    }     .shine-effect-2 {
+        position: relative;
+    } .shine-effect-2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(360deg, rgba(255, 0, 0, 0.591) 0%, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+        border-radius: 9px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    } .shine-effect-2:hover::before {
+        opacity: 1;
+    } 
+</style>
 
 <body>
     <div>
@@ -18,13 +54,13 @@
                 <div id="team-members" class="flex flex-row flex-wrap justify-center mt-8">
                     <!-- Me -->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="shine-effect flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
                             src="https://rscv-main.vercel.app/assets/me.2f4e1c72.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Jameel Tutungan</p>
-                            <p>Fullstack Developer (?)</p>
+                            <p>All-around Developer (?)</p>
                         </div>
                         <div class="flex items-center justify-center p-3 space-x-3 border-t-2">
                             <a rel="noopener noreferrer" href="mailto: tutunganjameelu1@gmail.com" title="email"
@@ -59,9 +95,9 @@
                     </div>
                     <!--glenn-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="shine-effect-2 flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105 z-10">
                         <img alt=""
-                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                            class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500 z-30"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
                         <div class="flex-1 my-4">
                             <p class="text-xl font-semibold leading-snug">Glennbrix Diolazo</p>
@@ -82,7 +118,7 @@
                     </div>
                     <!--jerico-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
@@ -105,7 +141,7 @@
                     </div>
                     <!--eugene-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
@@ -128,7 +164,7 @@
                     </div>
                     <!--jhob-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
@@ -151,7 +187,7 @@
                     </div>
                     <!--torreon-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">
@@ -174,7 +210,7 @@
                     </div>
                     <!--mendoza-->
                     <div
-                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
+                        class="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-xl md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100 transition-transform transform hover:scale-105">
                         <img alt=""
                             class="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                             src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg">

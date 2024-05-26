@@ -24,8 +24,4 @@ module.exports = {
       "dracula",
     ],
   },
-  darkMode: 'class',
-  theme: {
-    extend: {}
-  },
 }

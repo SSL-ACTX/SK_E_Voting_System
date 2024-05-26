@@ -13,15 +13,15 @@ if ($position_result->num_rows > 0) {
         $candidate_sql = "SELECT * FROM candidates WHERE position='$position' AND approval_status = 1"; // Update query to include approval_status condition
         $candidate_result = $conn->query($candidate_sql);
 
-        $html .= "<fieldset class='border border-gray-400 rounded-lg p-4 mb-4'>";
-        $html .= "<legend class='text-lg font-semibold mb-2 text-gray-800'>$position</legend>";
+        $html .= "<fieldset class='border border-gray-400 rounded-lg p-4 mb-8'>";
+        $html .= "<legend class='text-lg font-semibold mb-4 text-gray-800'>$position</legend>";
 
         if ($candidate_result->num_rows > 0) {
             while ($row = $candidate_result->fetch_assoc()) {
                 $candidate_id = $row["id"];
                 $candidate_name = $row["name"];
                 $party_affiliation = $row["party_affiliation"];
-                $html .= "<label class='block mb-2 text-gray-800'><input type='radio' name='$position' value='$candidate_id' class='mr-2'>$candidate_name <b>($party_affiliation)</b></label>";
+                $html .= "<label class='block mb-4 text-gray-800 flex items-center'><input type='radio' name='$position' value='$candidate_id' class='mr-2 custom-radio'>$candidate_name <span class='ml-2 text-sm text-gray-600'>$party_affiliation</span></label>";
             }
         } else {
             $html .= "<p class='text-gray-500'>No approved candidates available for $position</p>";
