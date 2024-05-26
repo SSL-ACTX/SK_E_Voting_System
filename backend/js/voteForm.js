@@ -138,6 +138,7 @@ function initializeVoteScript() {
 
     checkVotingStatus();
 
+    /**
     // Submit form data using AJAX
     document.getElementById('voteForm').addEventListener('submit', function (event) {
         event.preventDefault();
@@ -158,7 +159,7 @@ function initializeVoteScript() {
         };
         xhr.send(formData);
     });
-
+    **/
     
 }
 

@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         $user_row = $result->fetch_assoc();
-        $voter_email = $user_row['email']; // Fetch the email from the result
+        $voter_email = $user_row['email']; 
 
         $_SESSION["username"] = $username;
         $_SESSION["email"] = $voter_email;
@@ -26,16 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Get the voter ID
             $voter_row = $voter_check_result->fetch_assoc();
             $voter_id = $voter_row["id"];
-        
-            // Store voter_id in the session
             $_SESSION["voter_id"] = $voter_id;
         
-            // Redirect to voter dashboard
-            header("Location: voter_dashboard.php");
+            header("Location: voter_dashboard.php#home");
             exit();
         } else {
-            // Redirect to dashboard for other users
-            header("Location: dashboard.php");
+            header("Location: dashboard.php#homeFir");
             exit();
         }
     } else {

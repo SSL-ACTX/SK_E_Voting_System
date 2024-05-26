@@ -21,14 +21,11 @@ module.exports = {
     themes: [
       "light",
       "dark",
-      "cupcake",
-      "synthwave",
-      "cyberpunk",
-      "valentine",
-      "aqua",
-      "lofi",
-      "wireframe",
       "dracula",
     ],
+  },
+  darkMode: 'class',
+  theme: {
+    extend: {}
   },
 }

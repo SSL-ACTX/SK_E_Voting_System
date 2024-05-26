@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK E-voting System</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+     .herosec {
+        position: relative;
+        overflow: hidden;
+        background-image: url("https://i.ibb.co/BN6DRrm/photo-2024-05-22-23-45-33.jpg");
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+     }
+
+     .herosec::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.75);
+        z-index: 1; 
+     }
+
+     @media (max-width: 1020px) {
+        .herosec::before {
+            display: none;
+        }
+        .herosec {
+            background-image: none;
+            background-color: white;
+        }
+        .bg-image {
+            display: none;
+        }
+     }
+
+     .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://i.ibb.co/vvDQxs0/Photoroom-20240526-012833.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        box-shadow: 0 0 0 12px rgba(0, 0, 0, 1); 
+     }
+</style>
+<body class="bg-gray-100">
+
+  <!-- Hero Section -->
+  <section class="flex items-center justify-center h-screen bg-white herosec shadow-lg border border-gray-500 rounded-xl">
+    <div class="bg-image transition-transform transform hover:scale-105 shadow-sm z-30"></div>
+    <div class="container mx-auto px-6 py-12 lg:flex lg:items-center lg:justify-between">
+      
+      <!-- Text Content -->
+      <div class="lg:w-1/2 z-40">
+        <h2 class="text-sm font-semibold text-indigo-600 uppercase mb-2">Secure & Reliable</h2>
+        <h1 class="text-5xl font-bold text-gray-900 mb-6 transition-transform transform hover:scale-105">
+            Optimize your E-voting Experience with the SK E-voting System
+        </h1>
+        <p class="text-lg text-gray-800 mb-6 transition-opacity duration-300 hover:opacity-80">
+            Introducing the SK E-voting System: a modern solution for managing electronic voting. Our platform prioritizes security, transparency, and efficiency, offering streamlined voting processes, and instant results.
+        </p>
+        <div class="flex items-center">
+          <a href="#voter" class="bg-gray-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 mr-4" onclick="loadPage('../frontend/voterReg.html')">
+            Register as voter
+          </a>
+          <a href="#candidacy" class="bg-white flex items-center text-gray-900 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300" onclick="loadPage('../frontend/candidateReg.html')">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.741-4.232a1 1 0 00-1.511.857v8.474a1 1 0 001.511.857l6.741-4.232a1 1 0 000-1.714z"></path></svg>
+            Register as candidate
+          </a>
+        </div>
+        <div class="flex items-center mt-6 px-4 z-40">
+          <img src="https://rscv-main.vercel.app/assets/me.2f4e1c72.jpg" alt="User 1" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+          <img src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg" alt="User 2" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+          <img src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg" alt="User 3" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+          <img src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg" alt="User 4" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+          <img src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg" alt="User 5" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+          <img src="https://i.ibb.co/BqrFWCS/user-icon-trendy-flat-style-600nw-1697898655.jpg" alt="User 6" class="w-10 h-10 rounded-full border-2 border-white shadow-md -ml-4">
+        
+          <p class="ml-4 text-gray-600">Developed By: <span class="font-semibold text-gray-900">Group 3 (BSIT 2A)</span> Members.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+</body>
+</html>

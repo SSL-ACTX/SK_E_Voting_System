@@ -5,45 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Register</title>
-    <link rel="stylesheet" href="./css/logreg.css">
+    <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="./css/output.css">
-    <script src="../backend/js/validator001.js"></script>
+    <link rel="stylesheet" href="./css/logreg.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+    <script src="./backend/js/validator001.js"></script>
 </head>
+<style>
+    .leftB {
+        background-image: url("https://the-post-assets.sgp1.digitaloceanspaces.com/2020/08/SK.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="fixed top-0 right-0 m-4">
-        <div id="notification" class="hidden p-4 rounded-md shadow-md"></div>
-    </div>
+    #notification {
+        max-width: 300px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        position: fixed;
+        top: 4rem;
+        right: 4rem;
+        z-index: 9999;
+        text-align: center;
+    }
+</style>
 
-    <div class="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold text-center text-white">Register</h1>
-        <form id="registerForm" class="space-y-4">
-            <div>
-                <label for="username" class="block text-sm font-medium text-white">Username:</label>
-                <input type="text" id="username" name="username" required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-white">Email:</label>
-                <input type="email" id="email" name="email" required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="password" class="block text-sm font-medium text-white">Password:</label>
-                <input type="password" id="password" name="password" required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div class="flex items-center justify-between">
-                <button type="submit"
-                    class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Register</button>
-            </div>
-            <div class="text-center">
-                <a href="../index.html" class="text-sm text-indigo-500 hover:underline">Login</a>
-            </div>
-        </form>
-    </div>
+<body>
+    <!-- component -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 
-    <div id="notificationContainer" class="fixed top-4 right-4"></div>
+    <form id="registerForm" class="space-y-4">
+        <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
+            <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
+                style="max-width:1000px">
+                <div class="md:flex w-full">
+                    <div class="hidden md:block w-1/2 bg-white py-10 px-10 shadow-sm leftB">
+                    </div>
+
+                    <div class="w-full md:w-1/2 py-10 px-5 md:px-10 bg-indigo-700 nsofia">
+                        <div class="text-center mb-10">
+                            <h1 class="font-bold text-3xl text-white nsofia">REGISTER</h1>
+                            <p class="text-gray-300 isofia">Enter your information to register</p>
+                        </div>
+                        <div>
+                            <div class="flex -mx-3">
+                                <div class="w-full px-3 mb-5">
+                                    <label for="username" class="text-xs font-semibold px-1 text-white">Username</label>
+                                    <div class="flex">
+                                        <div
+                                            class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                            <i class="mdi mdi-email-outline text-white text-lg"></i>
+                                        </div>
+                                        <input type="text"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-white"
+                                            id="username" name="username" placeholder="Username">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-5">
+                                <label for="email" class="text-xs font-semibold px-1 text-white">Email</label>
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                        <i class="mdi mdi-lock-outline text-white text-lg"></i>
+                                    </div>
+                                    <input type="email"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 bg-indigo-700 rounded-lg border-2 border-gray-200 outline-none focus:border-white"
+                                        id="email" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-12">
+                                <label for="password" class="text-xs font-semibold px-1 text-white">Password</label>
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                        <i class="mdi mdi-lock-outline text-white text-lg"></i>
+                                    </div>
+                                    <input type="password"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-white"
+                                        id="password" name="password" placeholder="************">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-5">
+                                <button
+                                    class="block w-full max-w-xs mx-auto bg-white hover:bg-indigo-200 focus:bg-gray-300 text-gray-500 rounded-lg px-3 py-3 font-semibold">REGISTER</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="mx-3">
+                                <a href="../index.html">
+                                    <p class="text-xs font-semibold px-1 text-gray-300">Already Registered? Login!</p>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+
+    <div id="notification" class="fixed top-4 right-4 hidden p-4 nsofia rounded-md"></div>
 
     <script>
         document.getElementById('registerForm').addEventListener('submit', function (event) {

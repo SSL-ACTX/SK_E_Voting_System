@@ -19,6 +19,7 @@ $voter_email = $_SESSION["email"];
     <title>SK E-Voting System - Voter Dashboard</title>
     <link rel="stylesheet" href="../frontend/css/vdash.css">
     <link rel="stylesheet" href="../frontend/css/output.css">
+    <!--<script src="./js/IPChecker.js" async></script>-->
 </head>
 
 <body class="bg-gray-100">
@@ -68,7 +69,7 @@ $voter_email = $_SESSION["email"];
                     </div>
                     <div class="flex flex-col items-center w-full mt-2 border-t border-gray-700">
                         <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300"
-                            href="#results""> onclick="loadPage('./results.php')
+                            href="#results" onclick="loadPage('./results.php')">
                             <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -118,13 +119,7 @@ $voter_email = $_SESSION["email"];
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./js/RulesNotif.js" async></script>
-    <script src="./js/displayRules.js" async></script>
-    <!--<script src="./js/alrVoted.js" async></script>-->
-    <script src="./js/voteForm.js" async></script>
-    <script src="./js/candStatus.js" async"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
+    <script async>
         function loadPage(page) {
             $.ajax({
                 url: page,
@@ -156,6 +151,11 @@ $voter_email = $_SESSION["email"];
             $('.sidebar').toggleClass('active');
         }
     </script>
+    <script src="./js/RulesNotif.js"></script>
+    <script src="./js/displayRules.js"></script>
+    <!--<script src="./js/alrVoted.js" async></script>-->
+    <script src="./js/voteForm.js"></script>
+    <script src="./js/candStatus.js""></script>
 
 </body>
 

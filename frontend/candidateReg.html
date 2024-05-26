@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Candidate Registration</title>
-    <link rel="stylesheet" href="./css/output.css">
+    <link href="./css/output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <style>
@@ -15,127 +15,124 @@
             background-size: cover;
             backdrop-filter: brightness(50%) blur(3px);
         }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .form-input {
-            padding: 2px;
-            border-width: 1px;
-            border-color: #CBD5E0;
-        }
-
-        .form-input:focus {
-            border-color: #4299E1;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
-        }
-
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%231D4ED8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 0.5rem top 50%;
-            padding-right: 2.5rem;
-        }
-
-        .form-select:focus {
-            border-color: #4299E1;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
-        }
     </style>
 </head>
 
-<body data-theme="dark">
+<body>
+
 
     <div id="ntf"></div>
+
+    <div id="notificationContainer" class="fixed top-4 right-4"></div>
+
     <div class="flex items-center justify-center min-h-screen" id="candCont">
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h1 class="text-2xl font-semibold mb-4 text-black">Candidate Registration</h1>
-            <form id="registrationForm" class="grid grid-cols-2 gap-4">
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="name" class="form-label text-gray-700">
-                        Name:
-                        <input type="text" id="name" name="name" class="form-input mt-1 w-full rounded-md" required>
-                    </label>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="age" class="form-label text-gray-700">
-                        Age:
-                        <input type="text" id="age" name="age" class="form-input mt-1 w-full rounded-md" required>
-                    </label>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="residency" class="form-label text-gray-700">
-                        Residency:
-                        <input type="text" id="residency" name="residency" class="form-input mt-1 w-full rounded-md" required>
-                    </label>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="citizenship" class="form-label text-gray-700">
-                        Citizenship:
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8 mx-auto flex flex-wrap" style="max-width: 900px;">
+            <div class="w-full lg:w-1/2 px-4">
+                <h1 class="text-2xl font-semibold mb-4 text-black">Candidate Registration</h1>
+                <form id="registrationForm" class="grid grid-cols-2 gap-4">
+                    <div class="mb-5">
+                        <label for="name" class="form-label text-[#07074D]">Full Name:</label>
+                        <input type="text" id="name" name="name"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                    </div>
+                    <div class="mb-5">
+                        <label for="age" class="form-label text-[#07074D]">Age:</label>
+                        <input type="text" id="age" name="age"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                    </div>
+                    <div class="mb-5">
+                        <label for="residency" class="form-label text-[#07074D]">Residency:</label>
+                        <input type="text" id="residency" name="residency"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                    </div>
+                    <div class="mb-5">
+                        <label for="citizenship" class="form-label text-[#07074D]">Citizenship:</label>
                         <input type="text" id="citizenship" name="citizenship"
-                            class="form-input mt-1 w-full rounded-md" required>
-                    </label>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="party_affiliation" class="form-label text-gray-700">
-                        Party:
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                    </div>
+                    <div class="mb-5">
+                        <label for="party_affiliation" class="form-label text-[#07074D]">Party:</label>
                         <input type="text" id="party_affiliation" name="party_affiliation"
-                            class="form-input mt-1 w-full rounded-md" required>
-                    </label>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <label for="position" class="form-label text-gray-700">
-                        Position:
-                        <select id="position" name="position" class="form-select mt-1 w-full rounded-md" required>
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                    </div>
+                    <div class="mb-5">
+                        <label for="position" class="form-label text-[#07074D]">Position:</label>
+                        <select id="position" name="position"
+                            class="form-select mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
                             <option value="SK Chairperson">SK Chairperson</option>
                             <option value="SK Secretary">SK Secretary</option>
                             <option value="SK Treasurer">SK Treasurer</option>
                             <option value="SK Auditor">SK Auditor</option>
                             <option value="SK Kagawad">SK Kagawad</option>
                         </select>
-                    </label>
+                    </div>
+                    <div>
+                        <button id="registerButton"
+                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">Register</button>
+                    </div>
+                </form>
+                <div id="notification"
+                    class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"></div>
+            </div>
+            <div class="w-full lg:w-1/2 px-4 py-4">
+                <div class="text-gray-600 text-sm">
+                    <p class="mb-2">Tips for Registration:</p>
+                    <ul class="list-disc pl-5">
+                        <li>Make sure to provide accurate information.</li>
+                        <li>Double-check your entries before submitting.</li>
+                        <li>Refer to the guidelines for each field.</li>
+                        <li>Contact support if you encounter any issues.</li>
+                    </ul>
                 </div>
-                <div class="col-span-2">
-                    <button id="registerButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                        type="submit">Register</button>
+                <div class="mt-8 flex items-center">
+                    <img src="https://i.ibb.co/rsxxP8b/150px-Sangguniang-Kabataan-logo-svg.png" alt="Small Image"
+                        class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <p class="text-gray-600 text-sm">Need help?</p>
+                        <p class="text-gray-600 text-sm">Contact our support:</p>
+                        <ul class="list-disc pl-5">
+                            <li>Email: callixjeira@gmail.com</li>
+                            <li>BSIT 2A (GR3)</li>
+                        </ul>
+                    </div>
                 </div>
-            </form>
-            <div id="notification"
-                class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"></div>
+            </div>
+
         </div>
     </div>
 
-    <div id="notificationContainer" class="fixed top-4 right-4"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#registrationForm').submit(function (e) {
                 e.preventDefault();
-    
+
                 // Clear previous notifications
                 $('#notification').addClass('hidden').html('');
-    
+
                 var isValid = true;
                 var errorMessage = 'Please fill out the required fields: ';
-    
+
                 // Check each input field
-                $('#registrationForm input[type="text"]').each(function() {
+                $('#registrationForm input[type="text"]').each(function () {
                     if ($(this).val() === '') {
                         isValid = false;
                         errorMessage += $(this).attr('name') + ', ';
                     }
                 });
-    
+
                 if (!isValid) {
                     $('#notification').removeClass('hidden').html(errorMessage.slice(0, -2));
                     return;
                 }
-    
+
                 var formData = $(this).serialize();
                 $.ajax({
                     type: 'POST',
@@ -151,7 +148,8 @@
             });
         });
     </script>
-    
+
+
 
 </body>
 

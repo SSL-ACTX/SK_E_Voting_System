@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const heading = document.createElement('h1');
     heading.textContent = 'SK E-Voting System';
-    heading.className = 'text-2xl text-gray-700 ml-4';
+    heading.className = 'text-2xl text-white ml-4';
 
     container.appendChild(logoImg);
     container.appendChild(heading);

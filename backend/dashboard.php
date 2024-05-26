@@ -18,12 +18,8 @@ $voter_email = $_SESSION["email"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - User Dashboard</title>
     <link rel="stylesheet" href="../frontend/css/output.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./js/RulesNotif.js" async></script>
-    <!--<script src="./js/alrVoted.js" async></script>-->
-    <script src="./js/voteForm.js" async></script>
-    <script src="./js/candStatus.js" async"></script>
     <link rel="stylesheet" href="../frontend/css/vdash.css">
+    <link rel="stylesheet" href="../frontend/css/output.css">
 </head>
 
 <body class="bg-gray-100">
@@ -36,7 +32,7 @@ $voter_email = $_SESSION["email"];
                 <div class="w-full px-2">
                     <div class="flex flex-col items-center w-full mt-3 border-t border-gray-700">
                         <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300"
-                            href="#home" onclick="loadPage('../frontend/home.html')">
+                            href="#homeFir" onclick="loadPage('../frontend/homeFir.html')">
                             <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -45,7 +41,7 @@ $voter_email = $_SESSION["email"];
                             <span class="ml-2 text-sm font-medium">Home</span>
                         </a>
                         <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300"
-                            href="#vote" onclick="loadPage('../frontend/voteReg.html')">
+                            href="#voter" onclick="loadPage('../frontend/voterReg.html')">
                             <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -104,7 +100,9 @@ $voter_email = $_SESSION["email"];
         </div>
 
     </div>
-    <script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script async>
         function loadPage(page) {
             $.ajax({
                 url: page,
@@ -119,14 +117,25 @@ $voter_email = $_SESSION["email"];
         }
 
         $(document).ready(function () {
-            loadPage('../frontend/home.html');
+            var hash = window.location.hash;
+            if (hash) {
+                var page = hash.substring(1);
+                if (page.startsWith('./') && page.endsWith('.php')) {
+                    loadPage(page);
+                } else {
+                    loadPage('../frontend/' + page + '.html');
+                }
+            } else {
+                loadPage('../frontend/homeFir.html');
+            }
         });
 
-        // Function to toggle sidebar
         function toggleSidebar() {
             $('.sidebar').toggleClass('active');
         }
     </script>
+    <script src="./js/RulesNotif.js" async></script>
+    <script src="./js/candStatus.js" async"></script>
 
 </body>
 

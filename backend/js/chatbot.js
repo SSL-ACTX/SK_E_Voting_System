@@ -56,7 +56,7 @@
             }
     
             const chatbotContent = document.getElementById('chatbotContent');
-            chatbotContent.innerHTML += `<div class="mb-2"><strong>SKBot:</strong> ${generatedText}</div>`;
+            chatbotContent.innerHTML += `<div class="mb-2 text-gray-800"><strong>SKBot:</strong> ${generatedText}</div>`;
             console.log("Time taken:", elapsedTime, "seconds");
         })
         .catch(error => {
@@ -66,7 +66,7 @@
     
 
     // Fetch API key from JSON file and handle send button click
-    fetch('./api/gemini_api_key.json')
+    fetch('../api/gemini_api_key.json')
         .then(response => response.json())
         .then(data => {
             const apiKey = data.apiKey;
@@ -77,7 +77,7 @@
                 if (prompt) {
                     sendMessage(apiKey, prompt);
                     const chatbotContent = document.getElementById('chatbotContent');
-                    chatbotContent.innerHTML += `<div class="mb-2"><strong>You:</strong> ${prompt}</div>`;
+                    chatbotContent.innerHTML += `<div class="mb-2 text-gray-800"><strong>You:</strong> ${prompt}</div>`;
                     input.value = '';
                 }
             });
@@ -86,10 +86,3 @@
             console.error('Error fetching API key:', error);
         });
 })();
-
-// create nalang kayo ng json file na ganito:
-// - gemini_api_key.json
-// contents:
-// {
-//     "apiKey": "AIzaSyAvNlB1-cygF8C6XWpPN9K0eryqg61I2Ps"
-// }

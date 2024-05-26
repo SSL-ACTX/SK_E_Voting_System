@@ -21,7 +21,7 @@ require_once "./conn/db_connection.php";
     <h1 class="text-2xl font-bold mb-4 text-black">Candidate List</h1><hr><br>
 
     <div id="candidateListContainer">
-        <?php include 'CdListLoader.php'; ?>
+
     </div>
 
     <script>
@@ -43,7 +43,7 @@ require_once "./conn/db_connection.php";
         }
 
         loadCandidateList();
-        setInterval(loadCandidateList, 5000);
+        setInterval(loadCandidateList, 6000);
     </script>
 </body>
 </html>
