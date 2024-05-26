@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "sk_e_voting";
+$servername = getenv("MYSQL_ADDON_HOST");
+$username = getenv("MYSQL_ADDON_USER"); 
+$password = getenv("MYSQL_ADDON_PASSWORD"); 
+$dbname = getenv("MYSQL_ADDON_DB");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
