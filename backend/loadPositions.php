@@ -13,8 +13,8 @@ if ($position_result->num_rows > 0) {
         $candidate_sql = "SELECT * FROM candidates WHERE position='$position' AND approval_status = 1"; // Update query to include approval_status condition
         $candidate_result = $conn->query($candidate_sql);
 
-        $html .= "<fieldset class='border border-gray-400 rounded-lg p-4 mb-8'>";
-        $html .= "<legend class='text-lg font-semibold mb-4 text-gray-800'>$position</legend>";
+        $html .= "<fieldset class='border border-gray-400 rounded-lg p-4 mb-8 bg-gray-100 hover:bg-gray-200'>";
+        $html .= "<legend class='text-lg font-semibold mb-4 text-gray-800 nsofia'>$position</legend>";
 
         if ($candidate_result->num_rows > 0) {
             while ($row = $candidate_result->fetch_assoc()) {

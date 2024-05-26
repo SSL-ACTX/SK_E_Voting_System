@@ -7,62 +7,172 @@
     <title>SK E-Voting System - Voter Registration</title>
     <link rel="stylesheet" href="./css/output.css">
 </head>
+<style>
+    body {
+        background-image: url("https://i.ibb.co/8XYcxyQ/photo-2024-05-22-23-45-35.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        backdrop-filter: brightness(50%) blur(3px);
+    }
+
+    .error {
+        color: red;
+        display: none;
+    }
+</style>
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="w-full max-w-lg p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold text-center text-gray-800">Voter Registration</h1>
-        <form id="registrationForm" method="post" class="space-y-4">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-                <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-8 mx-auto flex flex-wrap" style="max-width: 900px;">
+            <div class="w-full lg:w-1/2 px-4">
+                <h1 class="text-2xl font-semibold mb-4 text-gray-100">Voter Registration</h1>
+                <hr><br>
+                <form id="registrationForm" class="grid grid-cols-2 gap-4">
+                    <div class="mb-5">
+                        <label for="name" class="form-label text-gray-300">Full Name:</label>
+                        <input type="text" id="name" name="name"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Name" required>
+                        <span class="error" id="nameError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="age" class="form-label text-gray-300">Age:</label>
+                        <input type="number" id="age" name="age"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Age" required>
+                        <span class="error" id="ageError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="passwprd" class="form-label text-gray-300">Password:</label>
+                        <input type="password" id="password" name="password"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="********" required>
+                        <span class="error" id="passwordError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="birthday" class="form-label text-gray-300">Birthday:</label>
+                        <input type="date" id="birthday" name="birthday"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            required>
+                        <span class="error" id="birthdayError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="citizenship" class="form-label text-gray-300">Citizenship:</label>
+                        <input type="text" id="citizenship" name="citizenship"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Citizenship" required>
+                        <span class="error" id="citizenshipError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="contact_no" class="form-label text-gray-300">Contact No.:</label>
+                        <input type="number" id="contact_no" name="contact_no"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Contact No." required>
+                        <span class="error" id="contactError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="address" class="form-label text-gray-300">Address:</label>
+                        <input type="text" id="address" name="address"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Address" required>
+                        <span class="error" id="addressError">Invalid characters detected.</span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="occupation" class="form-label text-gray-300">Occupation:</label>
+                        <input type="text" id="occupation" name="occupation"
+                            class="form-input mt-1 w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Occupation" required>
+                        <span class="error" id="occupationError">Invalid characters detected.</span>
+                    </div>
+                    <div>
+                        <button id="registerButton"
+                            class="hover:shadow-form w-full rounded-md bg-indigo-600 hover:bg-indigo-700 py-3 px-8 text-center text-base font-semibold text-white outline-none">Register</button>
+                    </div>
+                </form>
+                <div id="notification"
+                    class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"></div>
             </div>
-            <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <div class="w-full lg:w-1/2 px-4 py-4">
+                <div class="text-sm">
+                    <p class="mb-2 text-gray-100">Tips for Registration:</p>
+                    <ul class="list-disc pl-5">
+                        <li>Make sure to provide accurate information.</li>
+                        <li>Make sure the name you entered here is the same as your username.</li>
+                        <li>Double-check your entries before submitting.</li>
+                        <li>Refer to the guidelines for each field.</li>
+                        <li>Contact support if you encounter any issues.</li>
+                    </ul>
+                </div>
+                <div class="mt-8 flex items-center">
+                    <img src="https://i.ibb.co/rsxxP8b/150px-Sangguniang-Kabataan-logo-svg.png" alt="Small Image"
+                        class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <p class="text-gray-200 text-sm text-gray-100">Need help?</p>
+                        <p class="text-gray-200 text-sm text-gray-100">Contact our support:</p>
+                        <ul class="list-disc pl-5">
+                            <li>Email: callixjeira@gmail.com</li>
+                            <li>BSIT 2A (GR3)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="age" class="block text-sm font-medium text-gray-700">Age:</label>
-                <input type="number" id="age" name="age" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="birthday" class="block text-sm font-medium text-gray-700">Birthday:</label>
-                <input type="date" id="birthday" name="birthday" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="citizenship" class="block text-sm font-medium text-gray-700">Citizenship:</label>
-                <input type="text" id="citizenship" name="citizenship" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="contact_no" class="block text-sm font-medium text-gray-700">Contact No.:</label>
-                <input type="tel" id="contact_no" name="contact_no" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="address" class="block text-sm font-medium text-gray-700">Address:</label>
-                <input type="text" id="address" name="address" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="occupation" class="block text-sm font-medium text-gray-700">Occupation:</label>
-                <input type="text" id="occupation" name="occupation" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div class="flex items-center justify-between">
-                <input type="submit" value="Register" class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer">
-            </div>
-        </form>
-        <div id="notification" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"></div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            const invalidChars = /[<>\/\\"'&]/;
+
+            $('#registrationForm input[type="text"]').on('input', function () {
+                const errorSpan = $('#' + this.id + 'Error');
+                if (invalidChars.test($(this).val())) {
+                    errorSpan.show();
+                } else {
+                    errorSpan.hide();
+                }
+            });
+
             $('#registrationForm').submit(function (e) {
                 e.preventDefault();
+
+                // Clear previous notifications
+                $('#notification').addClass('hidden').html('');
+
+                var isValid = true;
+                var errorMessage = 'Please fill out the required fields: ';
+
+                // Check each input field
+                $('#registrationForm input[type="text"]').each(function () {
+                    const errorSpan = $('#' + this.id + 'Error');
+                    if ($(this).val() === '') {
+                        isValid = false;
+                        errorMessage += $(this).attr('name') + ', ';
+                    }
+                    if (invalidChars.test($(this).val())) {
+                        errorSpan.show();
+                        isValid = false;
+                    } else {
+                        errorSpan.hide();
+                    }
+                });
+
+                if (!isValid) {
+                    $('#notification').removeClass('hidden').html(errorMessage.slice(0, -2));
+                    return;
+                }
+
                 var formData = $(this).serialize();
                 $.ajax({
                     type: 'POST',
-                    url: '../backend/voter_registration.php',
+                    url: '../backend/voter_registration.php',  // Adjusted URL
                     data: formData,
                     success: function (response) {
                         $('#notification').removeClass('hidden').html(response);
+                        setTimeout(function () {
+                            window.location.href = './logout.php';
+                        }, 2000);
                     },
                     error: function (xhr, status, error) {
                         console.error(xhr.responseText);
@@ -71,6 +181,8 @@
             });
         });
     </script>
+
+
 </body>
 
 </html>

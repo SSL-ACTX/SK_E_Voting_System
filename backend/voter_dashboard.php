@@ -17,6 +17,7 @@ $voter_email = $_SESSION["email"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK E-Voting System - Voter Dashboard</title>
+    <link rel="stylesheet" href="../frontend/css/fonts.css">
     <link rel="stylesheet" href="../frontend/css/vdash.css">
     <link rel="stylesheet" href="../frontend/css/output.css">
     <!--<script src="./js/IPChecker.js" async></script>-->

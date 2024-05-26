@@ -114,15 +114,14 @@ $(document).ready(function () {
 
         // Add the rules and regulations content
         innerContent.innerHTML = `
-            <h2 class="text-xl font-semibold mb-4">Rules and Regulations for Voting</h2>
-            <ol class="list-decimal list-inside mb-4">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">Rules and Regulations for Voting</h2>
+            <ol class="list-decimal list-inside mb-4 text-gray-700">
                 <li>All voters must be registered and verified.</li>
                 <li>Each voter is entitled to one confidential and anonymous vote per election.</li>
                 <li>Voters must complete their voting within the specified time frame.</li>
                 <li>Any form of vote tampering, coercion, or fraud is strictly prohibited.</li>
                 <li>Voters should review their selections carefully before submission.</li>
                 <li>Report technical issues or disputes to election officials promptly.</li>
-                <li>No electronic devices are allowed during voting.</li>
                 <li>All votes are securely stored and encrypted.</li>
                 <li>Voters agree to abide by these rules and any guidelines set by the election committee.</li>
             </ol>
