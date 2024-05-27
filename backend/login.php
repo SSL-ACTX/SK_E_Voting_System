@@ -100,7 +100,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->isHTML(true);
                 $mail->Subject = 'OTP Verification';
-                $mail->Body    = 'Your OTP is: ' . $otp;
+                $mail->Body    = '
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>OTP Verification</title>
+                    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+                    <style>
+                        .email-container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #fff;
+                            border-radius: 8px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        .otp {
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #007bff;
+                        }
+                    </style>
+                </head>
+                <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
+                    <div class="email-container mt-5 p-4">
+                        <h2 class="text-center text-primary">OTP Verification</h2>
+                        <p class="text-muted">Use the following OTP to complete your verification process. This OTP is valid for a limited time only.</p>
+                        <div class="text-center my-4">
+                            <span class="otp">' . $otp . '</span>
+                        </div>
+                        <p class="text-muted">If you did not request this OTP, please ignore this email or contact support if you have any concerns.</p>
+                        <div class="text-center mt-4">
+                            <a href="https://yourwebsite.com" class="btn btn-primary">Visit Our Website</a>
+                        </div>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                </body>
+                </html>';
+                
 
                 $mail->send();
                 header("Location: otp_verification.php");
