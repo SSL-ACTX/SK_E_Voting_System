@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$voted) {
         $mail->SMTPSecure = 'tls';                              
         $mail->Port       = 587; 
 
-        $mail->setFrom('no-reply@example.com', 'Voting System');
+        $mail->setFrom('no-reply@example.com', 'SK E-Voting System');
         $mail->addAddress($voter_email);
 
         $mail->isHTML(true);
