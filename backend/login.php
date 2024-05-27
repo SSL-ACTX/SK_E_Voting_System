@@ -3,9 +3,8 @@ session_start();
 
 require_once "./conn/db_connection.php";
 
-$response = ['success' => false, 'message' => 'Invalid username or password'];
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["username"];
     $username = $_POST["username"];
     $password = $_POST["password"];
 
@@ -17,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepared statement for voters
     $stmt = $conn->prepare("SELECT * FROM voters WHERE name=? AND password=?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt->bind_param("ss", $name, $password);
     $stmt->execute();
     $voter_result = $stmt->get_result();
 
@@ -40,10 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $voter_id = $voter_row["id"];
             $_SESSION["voter_id"] = $voter_id;
 
-            $response['success'] = true;
-            $response['message'] = 'Login successful';
+            header("Location: voter_dashboard.php#home");
+            exit();
         } else {
-            $response['message'] = 'Login successful, but not a voter';
+            header("Location: dashboard.php#homeFir");
+            exit();
         }
     } elseif ($voter_result->num_rows > 0) {
         $user_row = $voter_result->fetch_assoc();
@@ -54,8 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $voter_id = $user_row["id"];
         $_SESSION["voter_id"] = $voter_id;
 
-        $response['success'] = true;
-        $response['message'] = 'Login successful';
+        header("Location: voter_dashboard.php#home");
+        exit();
+    } else {
+        echo "Invalid username or password";
     }
 
     // Close prepared statements and result sets
@@ -64,10 +66,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $voter_result->close();
 }
 
-// Close database connection
 $conn->close();
-
-// Return JSON response
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>

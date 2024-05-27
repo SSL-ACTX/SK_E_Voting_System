@@ -16,13 +16,9 @@
         background-size: cover;
         background-position: center;
         backdrop-filter: brightness(60%) blur(3px);
-    }
-
-    #mCont {
-        background-color: rgba(255, 255, 255, 0.916)
-    }
-
-    .custom-radio {
+    } #mCont {
+        background-color: rgba(255, 255, 255, 0.823);
+    } .custom-radio {
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -33,18 +29,16 @@
         outline: none;
         cursor: pointer;
         transition: border-color 0.3s ease;
-    }
-
-    .custom-radio:checked {
+    } .custom-radio:checked {
         background-color: #4F46E5;
         border-color: #4F46E5;
     }
 </style>
 
 <body>
-    <div class="rounded-lg shadow-lg p-6 mb-8" id="mCont">
-        <div class="container mx-auto p-8" id="content">
-            <h1 class="text-3xl font-bold mb-8 text-gray-800 nsofia">Vote</h1>
+    <div class="rounded-lg shadow-lg p-6 mb-8 bg-gray-700" id="mCont">
+        <div class="container mx-auto p-8 rounded-lg id="content">
+            <h1 class="text-3xl text-gray-700 font-bold mb-8 nsofia">Vote</h1>
             <form id="voteForm">
                 <div id="positions"></div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit

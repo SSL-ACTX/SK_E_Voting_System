@@ -37,22 +37,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert data into the database
         $sql = "INSERT INTO voters (voter_id, name, password, age, birthday, citizenship, contact_no, address, occupation)
-                VALUES ('$voter_id', '$name', '$password', '$age', '$birthday', '$citizenship', '$contact_no', '$address', '$occupation')";
+                VALUES ('$voter_id', '$name','$password', '$age', '$birthday', '$citizenship', '$contact_no', '$address', '$occupation')";
 
         if ($conn->query($sql) === TRUE) {
-            // Delete guest account
-            $delete_query = "DELETE FROM guest_users WHERE username = ?";
-            $delete_stmt = $conn->prepare($delete_query);
-            $delete_stmt->bind_param("s", $_SESSION['username']);
-            $delete_stmt->execute();
-
             echo "Voter registered successfully!";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
 
-    $delete_stmt->close();
     $conn->close();
 }
 ?>

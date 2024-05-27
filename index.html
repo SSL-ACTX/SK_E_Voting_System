@@ -9,25 +9,21 @@
     <link rel="stylesheet" href="./frontend/css/output.css">
     <link rel="stylesheet" href="./frontend/css/logreg.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
     <script src="./backend/js/validator001.js"></script>
 </head>
 <style>
     .leftB {
         background-image: url("https://the-post-assets.sgp1.digitaloceanspaces.com/2020/08/SK.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        background-repeat: no-repeat; background-position: center; background-size: cover;
     }
 </style>
-
 <body>
     <!-- component -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 
-    <form id="loginForm" class="space-y-4">
+    <form action="./backend/login.php" method="post" class="space-y-4">
         <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
             <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
                 style="max-width:1000px">
@@ -43,7 +39,7 @@
                         <div>
                             <div class="flex -mx-3">
                                 <div class="w-full px-3 mb-5">
-                                    <label for="username" class="text-xs font-semibold px-1 text-white">Username</label>
+                                    <label for="username" class="text-xs font-semibold px-1 text-white">Full Name</label>
                                     <div class="flex">
                                         <div
                                             class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
@@ -51,7 +47,7 @@
                                         </div>
                                         <input type="text"
                                             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                            id="username" name="username" placeholder="Username">
+                                            id="username" name="username" placeholder="Full Name">
                                     </div>
                                 </div>
                             </div>
@@ -78,12 +74,11 @@
                             <div class="flex justify-center">
                                 <div class="mx-3">
                                     <a href="./frontend/register.html">
-                                        <p class="text-xs font-semibold px-1 text-gray-300">No account yet? Register!
-                                        </p>
+                                        <p class="text-xs font-semibold px-1 text-gray-300">No account yet? Register!</p>
                                     </a>
                                 </div>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>
@@ -91,46 +86,10 @@
         </div>
     </form>
 
-    <div id="notification" class="fixed top-4 right-4 rounded-lg p-4 bg-gray-300 border border-gray-200 text-gray-800">
-    </div>
+    <div id="notificationContainer" class="fixed top-4 right-4"></div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault(); 
-
-            var formData = new FormData(this);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', './backend/login.php', true);
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 400) {
-                    // Request succeeded
-                    var response = JSON.parse(xhr.responseText);
-
-                    // Display notification
-                    var notificationContainer = document.getElementById('notification');
-                    notificationContainer.textContent = response.message;
-                    notificationContainer.classList.remove('hidden');
-                    if (response.success) {
-                        window.location.href = './backend/voter_dashboard.php#home';
-                    }
-                    setTimeout(function () {
-                        notificationContainer.classList.add('hidden');
-                    }, 3000); 
-                } else {
-                    console.error('Request failed with status', xhr.status);
-                }
-            };
-            xhr.onerror = function () {
-                console.error('Request failed');
-            };
-            xhr.send(formData);
-        });
-
-    </script>
-    <script src="./backend/js/IPChecker.js"></script>
     <script src="./backend/js/skInjectLogo.js"></script>
-    <!--<script src="./backend/js/chatbot.js"></script>-->
+    <script src="./backend/js/chatbot.js"></script>
 
 </body>
 

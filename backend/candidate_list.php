@@ -10,7 +10,7 @@ require_once "./conn/db_connection.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en" data-theme="cyberpunk">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
