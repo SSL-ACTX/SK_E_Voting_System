@@ -37,7 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($voter_check_result->num_rows > 0) {
             $voter_row = $voter_check_result->fetch_assoc();
             $voter_id = $voter_row["id"];
+            $v_id = $voter_row["voter_id"];
             $_SESSION["voter_id"] = $voter_id;
+            $_SESSION["v_id"] = $v_id;
 
             header("Location: voter_dashboard.php#home");
             exit();

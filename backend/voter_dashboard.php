@@ -8,6 +8,7 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["email"])) {
 
 $username = $_SESSION["username"];
 $voter_email = $_SESSION["email"];
+$v_id = $_SESSION["v_id"];
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,10 @@ $voter_email = $_SESSION["email"];
             <div class="p-4">
                 <img src="https://i.ibb.co/rsxxP8b/150px-Sangguniang-Kabataan-logo-svg.png" alt="Logo"
                     class="w-32 mx-auto mb-4">
+                <div class="flex justify-center">
+                    <p class="text-md font-bold text-gray-200">Voter ID: <i
+                            class="text-gray-300"><?php echo $v_id; ?></i></p>
+                </div>
                 <div class="w-full px-2">
                     <div class="flex flex-col items-center w-full mt-3 border-t border-gray-700">
                         <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300"
