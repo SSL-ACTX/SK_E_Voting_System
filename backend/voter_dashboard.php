@@ -31,7 +31,7 @@ $v_id = $_SESSION["v_id"];
                 <img src="https://i.ibb.co/rsxxP8b/150px-Sangguniang-Kabataan-logo-svg.png" alt="Logo"
                     class="w-32 mx-auto mb-4">
                 <div class="flex justify-center">
-                    <p class="text-md font-bold text-gray-200">Voter ID: <i
+                    <p class="text-md font-bold text-gray-200">Voter's ID: <i
                             class="text-gray-300"><?php echo $v_id; ?></i></p>
                 </div>
                 <div class="w-full px-2">
